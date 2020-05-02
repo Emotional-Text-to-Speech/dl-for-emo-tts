@@ -42,7 +42,32 @@ There are many more relevant papers that build up on the Vanilla Tacotron model.
 
 ## Approaches explored
 
-### Approach 1: Fine-tuning a Vanilla Tacotron model that was pre-trained on LJ-Speech
+### :x: Approach 1: Fine-tuning a Vanilla Tacotron model on RAVDESS that was pre-trained on LJ-Speech
 
-Our first approach was to train a vanilla Tacotron model from scratch on just one emotion (say, anger) and see if the g
+Our first approach was to train a vanilla Tacotron model from scratch on just one emotion (say, anger) and see if the generated voice has captured the prosodic features of that emotion.
+
+#### Motivation
+
+- We did not have acccess to any of the datasets described above except for RAVDESS and LJ Speech and had also never tried any of the Tacotron-flavored models before.
+- Hence, we just wanted to play around initially and at least generate the results on LJ Speech, and analyse the quality of speech generated.
+- The fine-tuning idea seemed natural after the pre-training was done, as the RAVDESS dataset was extremely limited, there was no point on training on it from scratch, as the vocabulary that the model was exposed to would be extremely low.
+- We were hoping that at best, less amount of fine-tuning would lead to transfer of prosodic features to the model and at worst, after fine-tuning for a long interval, would lead to over-fitting on the dataset.
+
+#### Observations 
+
+- The alignment of the encoder and decoder states was completely destroyed in the first 1000 iterations of training itself.
+- At test time, generated audio was initially empty. On further analysis, we discovered that this was because of the way the decoder stopped. 
+- If the all the values in the generated frames were below a certain threshold, the decoder would stop producing the new frames. We observed that in our case, this was happening at the beginning itself.
+- To fix this, we removed this condition and instead made the decoder produce sounds for a minimum number of iterations.
+- We observed that for lesser iterations of finetuning (1-3k iterations) the audio was produced was complete noise, with no intelligible speech.
+- If we fine-tune for long durations (~40k iterations), we observe that the model is able to generate angry speech for the utterances that are in the training set. However, even for utterances outside the training set, it speaks parts of the training set utterances only, indicating that the model has overfitted on this dataset.
+
+#### Inference and next steps
+
+- The observations presented above seemed to present a case of "catastrophic forgetting" where the model was forgetting the information that it had already learnt in the pre-training rates.
+- To counter this, we were advised to tweak the hyperparameters and training strategy of the model, such as learning rate, optimiser used, etc. 
+- We decided to try out this following approaches:
+  - Start the fine-tuning steps with a lower learning rate (pre-training was done at 0.002, so we decided to do fine-tuning with 2e-5). Note that the code also implemented alleaning learning rate strategy, where learning rate was reduced after few steps. We did not change it as it had given good results at pre-training.
+  - Changing the optimizer from Adam to SGD: Because the number of samples used for fine-tuning were less, and SGD has been known to generalise better for a smaller sample size, we decided to do this.
+  - Freezing the Encoder of the Tacotron while fine-tuning: We thought of this because the main purposed of the encoder is to convert the text to a latent space. Since LJ Speech had a better vocabulary either way, we did not feel the need to re-train this component of the model over RAVDESS' much inferior voabulary size.
 
