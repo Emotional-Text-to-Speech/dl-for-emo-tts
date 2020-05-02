@@ -73,6 +73,6 @@ Our first approach was to train a vanilla Tacotron model from scratch on just on
 
 ### :x: Approach 2: Using a smaller learning rate for fine-tuning
 
-In this approach, we repeated [Approach 1](###Approach-1:-Fine-tuning-a-Vanilla-Tacotron model-on-RAVDESS-that-was-pre-trained-on-LJ-Speech)
+In this approach, we repeated [Approach 1](#x-approach-1-fine-tuning-a-vanilla-tacotron-model-on-ravdess-that-was-pre-trained-on-lj-speech), but this time, while commencing the fine-tuning, we stuck with a smaller learning rate of **2e-5** as compared to the previous learning rate of **2e-3**. We did not make any other changes to the code or hyperparameters.
 
 
