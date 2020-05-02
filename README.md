@@ -24,7 +24,9 @@ Before we start out with Deep Learning based approaches for TTS, it is essential
 #### Relevant literature
 
 - **[Tacotron: Towards End-to-End Speech Synthesis](https://arxiv.org/abs/1703.10135)**
-  - An extremely influential paper in the are of Neural Text-to-speech. The idea can be abstracted to a simple encoder-decoder network, that takes as input the ground-truth audio and textual transcript. The reconstruction loss of the generated audio drives the training of the model. This was one of the architectures that we explored in this project.
+  - An extremely influential paper in the are of Neural Text-to-speech. The idea can be abstracted to a simple encoder-decoder network, that takes as input the ground-truth audio and textual transcript. 
+  - The reconstruction loss of the generated audio drives the training of the model. 
+  - This was one of the architectures that we explored in this project. We also presented details about this paper in a class lecture. [\[slides\]](https://docs.google.com/presentation/d/1MnwhzJmzH689NivBOFdQ60BhUEr3WtGAC_UBML0dS2E/edit?usp=sharing)
 - **[Style Tokens: Unsupervised Style Modeling, Control and Transfer in End-to-End Speech Synthesis
 ](https://arxiv.org/abs/1803.09017)**
   - This work was done by the same team that developed Tacotron.
