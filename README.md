@@ -1,7 +1,10 @@
 # Deep Learning for Emotional Text-to-speech
 A summary on our attempts at using Deep Learning approached for Emotional Text to Speech
 
-
+## TODO
+- [ ] Add links to Progress update slides
+- [ ] Add links to models/plots for all experiments
+- [ ] Add code/fork for each experiment
 
 # Emotional Text-to-speech with Tacotron and related models
 
@@ -17,7 +20,7 @@ Before we start out with Deep Learning based approaches for TTS, it is essential
 
 | Dataset | No. of Speakers | Emotions | No. of utterances | No. of unique prompts | Duration | Language | Comments | Pros | Cons|
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-| **[RAVDESS](https://zenodo.org/record/1188976#.Xqw8ntMvPBI)** | 24 (12 female, 12 male) | 8 (calm, neutral, happy, sad, angry, fearful, surprise, and disgust) | 1440 | 2 | ~1 hour | English | <ul><li>This dataset consists of 24 actors (12 female, 12 male), speaking in 8 emotions (calm, neutral, happy, sad, angry, fearful, surprise, and disgust)</li><li> Each speaker has 4 utterances for neutral emotion and 8 utterances for all other emotions, leading to 60 utterances per speaker</li></ul> | <ul><li>Easily available</li><li>Emotions contained are very easy to interpret</li></ul> | <ul><li>Very limited utterances</li><li>Poor vocabulary</li><li> Same utterance in different voices</li></ul> |
+| **[RAVDESS](https://zenodo.org/record/1188976#.Xqw8ntMvPBI)** | 24 (12 female, 12 male) | 8 (calm, neutral, happy, sad, angry, fearful, surprise, and disgust) | 1440 | 2 | ~1 hour | English | <ul><li> Each speaker has 4 utterances for neutral emotion and 8 utterances for all other emotions, leading to 60 utterances per speaker</li></ul> | <ul><li>Easily available</li><li>Emotions contained are very easy to interpret</li></ul> | <ul><li>Very limited utterances</li><li>Poor vocabulary</li><li> Same utterance in different voices</li></ul> |
 | **[EMOV-DB](https://github.com/numediart/EmoV-DB)** | 5 (3 male, 2 female) | 5 (neutral, amused, angry sleepy, disgust) |  6914 (1568, 1315, 1293, 1720, 1018) | 1150 | ~7 hours | English, French (1 male speaker) |<ul><li>An attempt at a large scale corpus for Emotional speech</li><li> The *Amused* emotion contains non-verbal cues like chuckling, etc. which do not show up in the transcript</li><li> Similarly, *Sleepiness* has yawning sounds.</li></ul> | <ul><li>Only large scale emotional corpus that we found freely available</li></ul> | <ul><li>Emotions covered are not very easy to interpret</li><li>The non-verbal cues make synthsis difficult</li><li> Also, not all emotions are available for all speakers</li></ul> |
 | **[LJ Speech](https://keithito.com/LJ-Speech-Dataset/)** | 1 (1 female) | NA (can be considered neutral) | 13100 | 13100 | 	23 hours 55 minutes 17 seconds | English | <ul><li>This is one of the largest corpuses for speech generation, with a rich vocabulary of over ~14k unique words</li><li>The sentences are taken from 7 non-fiction books</li></ul> | <ul><li>Large scale corpus</li><li> Rich vocabulary</li><li> Abbreviations in text are expanded in speech</li></ul> | <ul><li>No emotional annotations are available</li></ul> | 
 | **[IEMOCAP](https://sail.usc.edu/iemocap/)** | 10 (5 female, 5 male) | 9 (anger, happiness, excitement, sadness, frustration, fear, surprise, other and neutral state) | 10039 | NA | 12.5 hours | English | <ul><li>This dataset consists of 10 actors (5 male; 5 female) of multi-modal dyadic conversations, which were scripted and enacted by a group of actors</li></ul> | <ul><li>Variety of utterances</li><li> Rich vocabulary</li><li> Multi-modal input</li><li> Easy to interpret emotional annotations</li></ul> | <ul><li>The access is very restricted and upon being granted access, we got a corrupted archive file.</li></ul> |
@@ -41,6 +44,8 @@ Before we start out with Deep Learning based approaches for TTS, it is essential
 There are many more relevant papers that build up on the Vanilla Tacotron model. However, for the scope of our project, we restricted ourselves to these three papers.
 
 ## Approaches explored
+
+In this section, we have tried to summarise the approaches that we tried for performing Emotional TTS from DL-based approaches. Further, we have provided steps to reproduce our experiments as well.
 
 ### :x: Approach 1: Fine-tuning a Vanilla Tacotron model on RAVDESS that was pre-trained on LJ Speech
 
@@ -70,9 +75,28 @@ Our first approach was to train a vanilla Tacotron model from scratch on just on
   - **Start the fine-tuning steps with a lower learning rate**: Pre-training was done at 0.002, so we decided to do fine-tuning with 2e-5. Note that the code also implemented alleaning learning rate strategy, where learning rate was reduced after few steps. We did not change it as it had given good results at pre-training.
   - **Changing the optimizer from Adam to SGD**: Because the number of samples used for fine-tuning were less, and SGD has been known to generalise better for a smaller sample size, we decided to do this.
   - **Freezing the Encoder of the Tacotron while fine-tuning**: We thought of this because the main purposed of the encoder is to convert the text to a latent space. Since LJ Speech had a better vocabulary either way, we did not feel the need to re-train this component of the model over RAVDESS' much inferior voabulary size.
+  
+#### Reproducibility and further details
+
+- For the code in this experiment, we forked and worked with [@r9y9](https://github.com/r9y9)'s awesome repository: [https://github.com/r9y9/tacotron_pytorch](https://github.com/r9y9/tacotron_pytorch)
+- Our own fork for the same repository was used for all experiments, since later on we made some changes to the training procedure.
+- Instructions to set this code up are available in [@r9y9's README](https://github.com/r9y9/tacotron_pytorch/blob/master/README.md)
+- For more details about our results, you can take a look at our slides: [\[slides\]]()
+- For reproducing our results, you can use our trained models for this experiment, and use the [`Test Tacotron.ipynb`](https://github.com/r9y9/tacotron_pytorch/blob/master/notebooks/Test%20Tacotron.ipynb), to generate your own audio files.
 
 ### :x: Approach 2: Using a smaller learning rate for fine-tuning
 
 In this approach, we repeated [Approach 1](#x-approach-1-fine-tuning-a-vanilla-tacotron-model-on-ravdess-that-was-pre-trained-on-lj-speech), but this time, while commencing the fine-tuning, we stuck with a smaller learning rate of **2e-5** as compared to the previous learning rate of **2e-3**. We did not make any other changes to the code or hyperparameters.
+
+#### Motivation
+
+- Again, uptil this point, we had not discovered any new, larger corpus for Emotional Speech. Hence, we were stuck with RAVDESS again.
+- Drawing from the previous experiment, we wanted to see if the effect of the pre-trained Tacotron model, forgetting its weights could be mitigated by reducing the effect of the new gradients that are used for update during fine-tuning. 
+- To verify this, we reduced the learning rate of the model from **2e-3** to **2e-5**. 
+
+#### Observations
+
+- We did not observe any pattern, or any improvements as such in the initial iterations of fine-tuning (after 1k, 3k and 5k iterations).
+- Simply changing the initial learning rate, did not seem to have any effect on the training process.
 
 
