@@ -42,7 +42,7 @@ There are many more relevant papers that build up on the Vanilla Tacotron model.
 
 ## Approaches explored
 
-### :x: Approach 1: Fine-tuning a Vanilla Tacotron model on RAVDESS that was pre-trained on LJ-Speech
+### :x: Approach 1: Fine-tuning a Vanilla Tacotron model on RAVDESS that was pre-trained on LJ Speech
 
 Our first approach was to train a vanilla Tacotron model from scratch on just one emotion (say, anger) and see if the generated voice has captured the prosodic features of that emotion.
 
@@ -64,10 +64,15 @@ Our first approach was to train a vanilla Tacotron model from scratch on just on
 
 #### Inference and next steps
 
-- The observations presented above seemed to present a case of "catastrophic forgetting" where the model was forgetting the information that it had already learnt in the pre-training rates.
+- The observations presented above seemed to present a case of "*catastrophic forgetting*" where the model was forgetting the information that it had already learnt in the pre-training rates.
 - To counter this, we were advised to tweak the hyperparameters and training strategy of the model, such as learning rate, optimiser used, etc. 
 - We decided to try out this following approaches:
-  - Start the fine-tuning steps with a lower learning rate (pre-training was done at 0.002, so we decided to do fine-tuning with 2e-5). Note that the code also implemented alleaning learning rate strategy, where learning rate was reduced after few steps. We did not change it as it had given good results at pre-training.
-  - Changing the optimizer from Adam to SGD: Because the number of samples used for fine-tuning were less, and SGD has been known to generalise better for a smaller sample size, we decided to do this.
-  - Freezing the Encoder of the Tacotron while fine-tuning: We thought of this because the main purposed of the encoder is to convert the text to a latent space. Since LJ Speech had a better vocabulary either way, we did not feel the need to re-train this component of the model over RAVDESS' much inferior voabulary size.
+  - **Start the fine-tuning steps with a lower learning rate**: Pre-training was done at 0.002, so we decided to do fine-tuning with 2e-5. Note that the code also implemented alleaning learning rate strategy, where learning rate was reduced after few steps. We did not change it as it had given good results at pre-training.
+  - **Changing the optimizer from Adam to SGD**: Because the number of samples used for fine-tuning were less, and SGD has been known to generalise better for a smaller sample size, we decided to do this.
+  - **Freezing the Encoder of the Tacotron while fine-tuning**: We thought of this because the main purposed of the encoder is to convert the text to a latent space. Since LJ Speech had a better vocabulary either way, we did not feel the need to re-train this component of the model over RAVDESS' much inferior voabulary size.
+
+### :x: Approach 2: Using a smaller learning rate for fine-tuning
+
+In this approach, we repeated [Approach 1](###Approach-1:-Fine-tuning-a-Vanilla-Tacotron model-on-RAVDESS-that-was-pre-trained-on-LJ-Speech)
+
 
