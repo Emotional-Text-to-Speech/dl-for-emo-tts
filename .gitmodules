@@ -2,3 +2,6 @@
 	path = lib/tacotron_pytorch
 	url = https://github.com/Emotional-Text-to-Speech/tacotron_pytorch.git
 	branch = master
+[submodule "lib/pytorch-dc-tts"]
+	path = lib/pytorch-dc-tts
+	url = https://github.com/Emotional-Text-to-Speech/pytorch-dc-tts.git
