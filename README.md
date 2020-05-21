@@ -1,5 +1,5 @@
 # Deep Learning for Emotional Text-to-speech
-A summary on our attempts at using Deep Learning approaches for Emotional Text to Speech
+A summary on our attempts at using Deep Learning approached for Emotional Text to Speech
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Emotional-Text-to-Speech/dl-for-emo-tts/blob/master/Demo_DL_Based_Emotional_TTS.ipynb)
 ![demo](assets/dl_demo_2.gif)
@@ -60,7 +60,7 @@ Our first approach was to train a vanilla Tacotron model from scratch on just on
 
 ### Motivation
 
-- We did not have acccess to any of the datasets described above except for RAVDESS and LJ Speech and had also never tried any of the Tacotron-flavored models before.
+- We did not have access to any of the datasets described above except for RAVDESS and LJ Speech and had also never tried any of the Tacotron-flavored models before.
 - Hence, we just wanted to play around initially and at least generate the results on LJ Speech, and analyse the quality of speech generated.
 - The fine-tuning idea seemed natural after the pre-training was done, as the RAVDESS dataset was extremely limited, there was no point on training on it from scratch, as the vocabulary that the model was exposed to would be extremely low.
 - We were hoping that at best, less amount of fine-tuning would lead to transfer of prosodic features to the model and at worst, after fine-tuning for a long interval, would lead to over-fitting on the dataset.
