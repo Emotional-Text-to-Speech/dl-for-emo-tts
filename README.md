@@ -1,7 +1,7 @@
 # Deep Learning for Emotional Text-to-speech
 A summary on our attempts at using Deep Learning approaches for Emotional Text to Speech
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Emotional-Text-to-Speech/dl-for-emo-tts/blob/master/Demo_DL_Based_Emotional_TTS.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Emotional-Text-to-Speech/dl-for-emo-tts/blob/master/Demo_DL_Based_Emotional_TTS.ipynb) [![DOI](https://zenodo.org/badge/260492782.svg)](https://zenodo.org/badge/latestdoi/260492782)
 ![demo](assets/dl_demo_2.gif)
 
 ---
