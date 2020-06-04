@@ -298,9 +298,9 @@ Models used in our code are here: [`demo_models`](https://drive.google.com/open?
 If you find the models, code or approaches in this repository helpful, please consider citing this repository as follows:
 
 ```
-@software{aditya_chetan_2020_3876081,
-  author       = {Aditya Chetan and
-                  Brihi Joshi and
+@software{brihi_joshi_2020_3876081,
+  author       = {Brihi Joshi and
+                  Aditya Chetan and
                   Pulkit Madaan and
                   Pranav Jain and
                   Srija Anand and
