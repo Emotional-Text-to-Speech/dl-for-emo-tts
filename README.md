@@ -21,7 +21,9 @@ A summary on our attempts at using Deep Learning approaches for Emotional Text t
   - [Approach 8: Fine-tuning only on one speaker with reduced `top_db` and monotonic attention](#white_check_mark-approach-8-fine-tuning-only-on-one-speaker-with-reduced-top_db-and-monotonic-attention)
 - [Reproducibility and Code](#reproducibility-and-code)
 - [Demonstration](#demonstration)
+- [Cite](#cite)
 - [Contact](#contact)
+
 
 ---
 
@@ -290,6 +292,30 @@ Additionally, we also only used the data for one female speaker per emotion. The
 In order to view a working demonstration of the models, open the file ```Demo_DL_Based_Emotional_TTS.ipynb``` and click on ```Open in Colab```. Follow the steps as mentioned in the Colab Notebook.
 
 Models used in our code are here: [`demo_models`](https://drive.google.com/open?id=1n9RYwClrcWz7jbrTM4gzypCMvW7HQHu4)
+
+# Cite
+
+If you find the models, code or approaches in this repository helpful, please consider citing this repository as follows:
+
+```
+@software{aditya_chetan_2020_3876081,
+  author       = {Aditya Chetan and
+                  Brihi Joshi and
+                  Pulkit Madaan and
+                  Pranav Jain and
+                  Srija Anand and
+                  Eshita and
+                  Shruti Singh},
+  title        = {{An exploration into Deep Learning methods for 
+                   Emotional Text-to-Speech}},
+  month        = jun,
+  year         = 2020,
+  publisher    = {Zenodo},
+  version      = {v1.0.0},
+  doi          = {10.5281/zenodo.3876081},
+  url          = {https://doi.org/10.5281/zenodo.3876081}
+}
+```
 
 ---
 
