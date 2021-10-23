@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Joshi"
+  given-names: "Brihi"
+  orcid: "https://orcid.org/0000-0001-7607-4119"
+- family-names: "Chetan"
+  given-names: "Aditya"
+  orcid: "https://orcid.org/0000-0001-7361-6525"
+- family-names: "Madaan"
+  given-names: "Pulkit"
+  orcid: "https://orcid.org/0000-0002-8051-9237"
+- family-names: "Jain"
+  given-names: "Pranav"
+  orcid: "https://orcid.org/0000-0002-8176-7558"
+- family-names: "Anand"
+  given-names: "Srija"
+- given-names: "Eshita"
+- family-names: "Singh"
+  given-names: "Shruti"
+title: "dl-for-emo-tts"
+version: 1.0.0
+doi: 10.5281/zenodo.3876081
+date-released: 2020-05-13
+url: "https://github.com/Emotional-Text-to-Speech/dl-for-emo-tts"
