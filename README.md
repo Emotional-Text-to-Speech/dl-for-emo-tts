@@ -291,7 +291,7 @@ Additionally, we also only used the data for one female speaker per emotion. The
 
 In order to view a working demonstration of the models, open the file ```Demo_DL_Based_Emotional_TTS.ipynb``` and click on ```Open in Colab```. Follow the steps as mentioned in the Colab Notebook.
 
-Models used in our code are here: [`demo_models`](https://drive.google.com/open?id=1n9RYwClrcWz7jbrTM4gzypCMvW7HQHu4)
+Models used in our code are here: [`demo_models`](https://drive.google.com/drive/folders/1Qwp6wwn0Ee_eT6xSGPYw6WMqmwR5G8ZH?usp=sharing)
 
 # Cite
 
