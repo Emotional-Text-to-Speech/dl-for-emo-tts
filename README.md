@@ -46,7 +46,7 @@ A summary on our attempts at using Deep Learning approaches for Emotional Text t
 ](https://arxiv.org/abs/1803.09017)**
   - This work was done by the same team that developed Tacotron.
   - The core idea was to improve the expressiveness of the generated speech, by incorporating "Style Tokens" which was basically an additional embedding layer for the ground-truth audio, which was used to condition the generated audio, so that transfer of "prosodic features" could occur. 
-  - We also explored this model, and presented it for a class lecture. [\[slides\]](https://docs.google.com/presentation/d/1aug9OmIrd8nDY4BmyIK_z65D9DKP5cbrjgX4aDBngFU/edit?usp=sharing)
+  - We also explored this model, and presented it for a class lecture. [\[slides\]](https://docs.google.com/presentation/d/1_cG3AeNtU0taMMwRfQWmOSGCLnaQfYU6Fa7UIYTNJlg/edit?usp=sharing)
   - However, we did not explore this as extensively as the Tacotron, as it took a lot of time and resources to train.
 - **[Efficiently Trainable Text-to-Speech System Based on Deep Convolutional Networks with Guided Attention](https://arxiv.org/abs/1710.08969)**
   - This work aimed at more efficient text-to-speech generation by using fully convolutional layers with guided attention.
